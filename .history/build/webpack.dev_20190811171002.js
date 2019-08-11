@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:13:51
+ * @LastEditTime: 2019-08-11 17:10:02
  * @LastEditors: Please set LastEditors
  */
 const merge = require('webpack-merge');
@@ -34,9 +34,6 @@ module.exports = merge(common, {
             });
 
             app.get('/immediate/rsp', function (req, res) {
-                res.json({ custom: 'response' });
-            });
-            app.post('/immediate/post/rsp', function (req, res) {
                 res.json({ custom: 'response' });
             });
         }

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:29:27
+ * @LastEditTime: 2019-08-11 17:25:39
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -15,7 +15,6 @@
         <img src="./assets/logo.png" alt>
         <el-button @click="getImmediateRsp">发送同域名请求</el-button>
         <el-button @click="cross">发送跨域名请求</el-button>
-        <el-button @click="beacon">发送同域名beacon请求</el-button>
         <div class="flex space-around router">
             <router-link to="/introduce">Introduce</router-link>
             <router-link to="/me">About me</router-link>
@@ -45,6 +44,7 @@ export default {
         Promise.all(tasks).then(rsp => {
             console.log('promise.all back', rsp)
         })
+        // tasks.promis
 
         // // get 请求
         // this.$ajax
@@ -79,9 +79,6 @@ export default {
     },
     methods: {
         ...mapActions(['countUp']),
-        beacon() {
-            navigator.sendBeacon(`/immediate/post/rsp`);
-        },
         cross() {
             this.$ajax
                 .get(

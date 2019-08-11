@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:29:27
+ * @LastEditTime: 2019-08-11 16:43:18
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -13,9 +13,6 @@
             title="Fork me on GitHub"
         >Fork me on GitHub</a>
         <img src="./assets/logo.png" alt>
-        <el-button @click="getImmediateRsp">发送同域名请求</el-button>
-        <el-button @click="cross">发送跨域名请求</el-button>
-        <el-button @click="beacon">发送同域名beacon请求</el-button>
         <div class="flex space-around router">
             <router-link to="/introduce">Introduce</router-link>
             <router-link to="/me">About me</router-link>
@@ -26,7 +23,6 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue';
 import { mapActions } from 'vuex';
-// import { Promise } from 'q';
 export default {
     name: 'app',
     data() {
@@ -37,14 +33,12 @@ export default {
     },
     created() {
         console.log(process.env.NODE_ENV);
-        // this.getDelayRsp()
+        this.getPath()
         let tasks = []
         for (let i = 0; i < 6; i++) {
-            tasks.push(this.getDelayRsp())
+            // tasks.push(this.getPath)
         }
-        Promise.all(tasks).then(rsp => {
-            console.log('promise.all back', rsp)
-        })
+        // tasks.promis
 
         // // get 请求
         // this.$ajax
@@ -79,39 +73,11 @@ export default {
     },
     methods: {
         ...mapActions(['countUp']),
-        beacon() {
-            navigator.sendBeacon(`/immediate/post/rsp`);
-        },
-        cross() {
+        getPath() {
             this.$ajax
                 .get(
-                    'https://www.easy-mock.com/mock/5b1f88a39f7d4a3a70fcbfd3/suporka/get',
+                    '/some/path',
                     {}
-                )
-                .then(res => {
-                    console.log(res);
-                });
-        },
-
-        getImmediateRsp() {
-            this.$ajax
-                .get(
-                    '/immediate/rsp',
-            )
-                .then(res => {
-                    console.log(res);
-                    return res
-                });
-        },
-        getDelayRsp(delay = 30) {
-            this.$ajax
-                .get(
-                    '/delay/rsp',
-                    {
-                        params: {
-                            delay
-                        }
-                    }
                 )
                 .then(res => {
                     console.log(res);

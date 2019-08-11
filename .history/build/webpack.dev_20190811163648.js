@@ -2,41 +2,19 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:13:51
+ * @LastEditTime: 2019-08-11 16:36:48
  * @LastEditors: Please set LastEditors
  */
 const merge = require('webpack-merge');
 const common = require('./webpack.base.js');
 const path = require('path');
-const timeDelay = 20
-const timeDelayInMs = timeDelay * 1000
 
 module.exports = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: '../dist',
         before: function (app, server) {
-            app.get('/delay/rsp', function (req, res) {
-                let delay = 20
-                try {
-                    // console.log('req.query = ', req.query)
-                    // console.log('req.query.params = ', req.query.params)
-                    // console.log('typeof req.query.params = ', typeof req.query.params)
-                    // console.log('req.query.params.delay = ', req.query.params.delay)
-                    delay = JSON.parse(req.query.params).delay
-                } catch (error) {
-
-                }
-                // console.log('delay = ', delay)
-                setTimeout(() => {
-                    res.json({ custom: 'response' });
-                }, delay * 1000)
-            });
-
-            app.get('/immediate/rsp', function (req, res) {
-                res.json({ custom: 'response' });
-            });
-            app.post('/immediate/post/rsp', function (req, res) {
+            app.get('/some/path', function (req, res) {
                 res.json({ custom: 'response' });
             });
         }
@@ -47,7 +25,6 @@ module.exports = merge(common, {
     },
     externals: {
         vue: 'Vue',
-        "element-ui": "ELEMENT"
     },
     module: {
         rules: [

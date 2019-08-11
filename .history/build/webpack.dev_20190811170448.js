@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:13:51
+ * @LastEditTime: 2019-08-11 17:04:48
  * @LastEditors: Please set LastEditors
  */
 const merge = require('webpack-merge');
@@ -16,7 +16,7 @@ module.exports = merge(common, {
     devServer: {
         contentBase: '../dist',
         before: function (app, server) {
-            app.get('/delay/rsp', function (req, res) {
+            app.get('/some/path', function (req, res) {
                 let delay = 20
                 try {
                     // console.log('req.query = ', req.query)
@@ -31,13 +31,6 @@ module.exports = merge(common, {
                 setTimeout(() => {
                     res.json({ custom: 'response' });
                 }, delay * 1000)
-            });
-
-            app.get('/immediate/rsp', function (req, res) {
-                res.json({ custom: 'response' });
-            });
-            app.post('/immediate/post/rsp', function (req, res) {
-                res.json({ custom: 'response' });
             });
         }
     },

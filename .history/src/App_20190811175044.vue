@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 18:29:27
+ * @LastEditTime: 2019-08-11 17:50:28
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -45,6 +45,7 @@ export default {
         Promise.all(tasks).then(rsp => {
             console.log('promise.all back', rsp)
         })
+        // tasks.promis
 
         // // get 请求
         // this.$ajax
@@ -80,7 +81,7 @@ export default {
     methods: {
         ...mapActions(['countUp']),
         beacon() {
-            navigator.sendBeacon(`/immediate/post/rsp`);
+            sendBeacon(`/immediate/rsp`);
         },
         cross() {
             this.$ajax

@@ -2,12 +2,10 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-10 17:12:18
- * @LastEditTime: 2019-08-11 17:52:40
+ * @LastEditTime: 2019-08-10 17:43:07
  * @LastEditors: Please set LastEditors
  */
 // import Vue from 'vue';
-
-import ElementUI from "element-ui";
 import App from './App.vue';
 import VueRouter from 'vue-router';
 
